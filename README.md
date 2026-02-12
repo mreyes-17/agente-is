@@ -1,2 +1,260 @@
-# agente-is
-my valentine
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente Confidencial: Agente Santos</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Special+Elite&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fdfaf3;
+            --ink: #2c2c2c;
+            --rose: #a32d3c;
+            --gold: #b08d57;
+        }
+
+        body {
+            background-color: #120a0a;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            font-family: 'Special Elite', serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle, #2a1515 0%, #0a0505 100%);
+        }
+
+        .newspaper {
+            width: 90%;
+            max-width: 480px;
+            background-color: var(--paper);
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 0 80px rgba(0,0,0,0.9), inset 0 0 100px rgba(176,141,87,0.1);
+            border-radius: 4px;
+            position: relative;
+            min-height: 90vh;
+            border: 1px solid #e3d9c6;
+        }
+
+        .page { display: none; animation: smoothReveal 2s ease; }
+        .active { display: block; }
+
+        @keyframes smoothReveal {
+            from { opacity: 0; filter: blur(10px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        .header-main {
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+
+        .edition-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 3.5rem;
+            color: var(--rose);
+            margin: 0;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+        }
+
+        .photo-frame {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 25px 0;
+            border: 1px solid #f0e6d2;
+            transform: rotate(-0.5deg);
+        }
+
+        img, video { width: 100%; border-radius: 1px; }
+
+        .handwritten {
+            font-family: 'Dancing Script', cursive;
+            color: var(--rose);
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        .btn-love {
+            background: var(--rose);
+            color: #fdfaf3;
+            border: none;
+            padding: 22px;
+            width: 100%;
+            font-family: 'Special Elite', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(163,45,60,0.4);
+            transition: 0.4s;
+            letter-spacing: 2px;
+        }
+
+        .btn-love:hover {
+            background: #82222f;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(163,45,60,0.6);
+        }
+
+        .quote-box {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #444;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid var(--rose);
+            background: rgba(163,45,60,0.03);
+        }
+
+        .falling {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="newspaper">
+
+        <div class="page active" id="p1">
+            <div style="text-align: center; padding: 40px 0;">
+                <span class="tagline">Top Secret // Solo para sus ojos</span>
+                <h1 class="edition-title">The Love Report</h1>
+                
+                <div style="margin: 35px 0; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); padding: 15px;">
+                    <p style="letter-spacing: 2px;">DESTINATARIA: <span class="handwritten" style="font-size: 2.2rem;">Agente Santos</span></p>
+                    <p style="font-size: 0.8rem; color: #777;">REMITENTE: M (SU AYUDANTE FIEL)</p>
+                </div>
+
+                <div class="music-container">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2kVtMvrlcK5SRxZvdHgTzn?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+
+                <p style="line-height: 1.8;">Usted ha sido seleccionada para revisar una serie de hallazgos críticos. Por favor, <b>Agente Santos</b>, active la música y proceda con el descubrimiento.</p>
+
+                <button class="btn-love" onclick="nextPage(2)">REVISAR PRUEBAS</button>
+            </div>
+        </div>
+
+        <div class="page" id="p2">
+            <div class="header-main">
+                <span class="tagline">Anexo de Vigilancia 01</span>
+                <h1 class="edition-title" style="font-size: 2.3rem;">Evidencia Viva</h1>
+            </div>
+            
+            <div class="photo-frame">
+                <video id="v1" controls loop>
+                    <source src="Video 1.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="quote-box">
+                "Se observa una felicidad genuina que solo ocurre cuando usted está presente en la escena."
+            </div>
+            
+            <button class="btn-love" onclick="nextPage(3)">SIGUIENTE HALLAZGO</button>
+        </div>
+
+        <div class="page" id="p3">
+            <h1 class="edition-title" style="font-size: 2.5rem; text-align: center;">Momentos Capturados</h1>
+            
+            <div class="photo-frame" style="transform: rotate(1.5deg);">
+                <img src="IM 1.jpg">
+                <p class="handwritten" style="font-size: 1.5rem; text-align: center; margin-top: 10px;">Su sonrisa, Agente...</p>
+            </div>
+
+            <div class="photo-frame" style="transform: rotate(-1.5deg);">
+                <img src="IM 2.jpg">
+                <p class="handwritten" style="font-size: 1.5rem; text-align: center; margin-top: 10px;">...es mi paz favorita.</p>
+            </div>
+
+            <button class="btn-love" onclick="nextPage(4)">DICTAR SENTENCIA</button>
+        </div>
+
+        <div class="page" id="p4">
+            <div class="header-main">
+                <h1 class="edition-title">Veredicto Final</h1>
+            </div>
+            
+            <div class="photo-frame">
+                <img src="IM 3.jpg">
+            </div>
+
+            <p style="text-align: center; padding: 0 10px;">Tras una investigación profunda, solo queda una interrogante para la <b>Agente Santos</b>:</p>
+            
+            <h2 class="handwritten" style="text-align: center; font-size: 3.2rem; margin: 30px 0;">¿Puedo ser tu San Valentín?</h2>
+            
+            <div style="background: var(--rose); color: white; padding: 20px; text-align: center; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                <p style="margin: 0;">📅 <b>MISIÓN CONFIRMADA: 18 DE FEBRERO</b></p>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-love" onclick="celebrate()">SÍ, ACEPTO</button>
+                <button class="btn-love" onclick="celebrate()">¡CLARO QUE SÍ!</button>
+            </div>
+        </div>
+
+        <div class="page" id="p5">
+            <div style="text-align: center; padding: 20px;">
+                <div class="photo-frame" style="border-radius: 50%; width: 230px; height: 230px; margin: 0 auto; overflow: hidden; border: 6px solid var(--paper);">
+                    <img src="IM 5.jpg" style="height: 100%; object-fit: cover;">
+                </div>
+                <h1 class="handwritten" style="font-size: 3.5rem; margin-top: 25px;">¡Misión Aceptada!</h1>
+                <div class="quote-box">
+                    "La Agente Santos ha aceptado el primer caso de su carrera: Ser mi San Valentín."
+                </div>
+                <p>Nos vemos el 18. Prepárese, Agente, porque esto apenas comienza.</p>
+                <br>
+                <h2 class="handwritten" style="font-size: 3.5rem;">TE AMA M</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function nextPage(n) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('p' + n).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            if(n === 2) { document.getElementById('v1').play(); }
+        }
+
+        function celebrate() {
+            nextPage(5);
+            setInterval(createSpecialRain, 150);
+        }
+
+        function createSpecialRain() {
+            const symbols = ['💕', '💖', '🌷', '🐧'];
+            const p = document.createElement('div');
+            p.classList.add('falling');
+            p.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = '-20px';
+            p.style.fontSize = (Math.random() * 20 + 25) + 'px';
+            p.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }
+    </script>
+</body>
+</html>

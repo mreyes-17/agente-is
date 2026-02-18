@@ -102,10 +102,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .btn-unlock {
-            background: #2c2c2c;
-            margin-top: 15px;
-        }
+        .btn-unlock { background: #2c2c2c; margin-top: 15px; }
 
         .quote-box {
             font-family: 'Playfair Display', serif;
@@ -126,13 +123,7 @@
             animation: fall linear forwards;
         }
 
-        /* Estilo para la carta final */
-        .final-letter {
-            text-align: left;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #333;
-        }
+        .final-letter { text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333; }
 
         @keyframes fall {
             to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
@@ -140,6 +131,10 @@
     </style>
 </head>
 <body>
+
+    <audio id="bgMusic" loop>
+        <source src="mi suerte.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="newspaper">
 
@@ -153,9 +148,9 @@
                     <p style="font-size: 0.7rem; color: #777;">REMITENTE: M (SU AYUDANTE FIEL)</p>
                 </div>
 
-                <p style="line-height: 1.6; font-size: 0.95rem;">Usted ha sido seleccionada para revisar una serie de hallazgos críticos. Por favor, <b>Agente Santos</b>, proceda con el descubrimiento.</p>
+                <p style="line-height: 1.6; font-size: 0.95rem;">Usted ha sido seleccionada para revisar una serie de hallazgos críticos. Por favor, <b>Agente Santos</b>, presione el botón para iniciar la secuencia.</p>
 
-                <button class="btn-love" onclick="nextPage(2)">REVISAR PRUEBAS</button>
+                <button class="btn-love" onclick="startExperience()">INICIAR MISIÓN</button>
             </div>
         </div>
 
@@ -226,7 +221,7 @@
                 <div class="quote-box">
                     "La Agente Santos ha aceptado el primer caso de su carrera: Ser mi San Valentín."
                 </div>
-                <p style="font-size: 0.9rem;">Nos vemos el 18. Pero antes, Agente, queda un último protocolo de seguridad.</p>
+                <p style="font-size: 0.9rem;">Para conocer el destino de la misión, ingrese la clave de seguridad.</p>
                 
                 <button class="btn-love btn-unlock" onclick="askPassword()">DESBLOQUEAR UBICACIÓN</button>
                 
@@ -244,17 +239,18 @@
             <div class="final-letter">
                 <p class="handwritten" style="font-size: 2.5rem; color: var(--rose); margin-bottom: 10px;">Perfecto, mi amor...</p>
                 <p>Primero que nada, <b>¡Feliz San Valentín!</b></p>
-                <p>Como ves, el acceso al lugar se ha desbloqueado, pero... ¿realmente creíste que sería tan fácil? Pues no, Agente. Su última misión requiere agudeza visual.</p>
-                <p>Debe dirigirse al punto donde el aroma del café y la nostalgia de los discos se encuentran; un rincón donde cada esquina esconde un tesoro <i>vintage</i>.</p>
+                <p>Como ves, el lugar de nuestra cita se ha desbloqueado, pero... ¿creíste que sería tan fácil? Pues no. Para encontrarme, deberás seguir tu instinto.</p>
+                <p>Dirígete al lugar donde el aroma del café y los discos se encuentran; ese rincón especial donde en cada esquina encuentras tesoros <i>vintage</i>.</p>
                 
                 <div class="quote-box" style="border-left: 4px solid var(--gold); background: #fff;">
-                    <strong>PUNTO DE REUNIÓN:</strong><br>
-                    📍 <a href="https://www.google.com/maps?q=-16.510985557152303,-68.12455033745351" target="_blank" style="color: var(--rose); text-decoration: none;">-16.5109855, -68.1245503</a><br>
-                    <strong>HORA DE ENCUENTRO:</strong> 17:30
+                    <strong>PUNTO DE ENCUENTRO:</strong><br>
+                    📍 <a href="https://www.google.com/maps?q=-16.510985557152303,-68.12455033745351" target="_blank" style="color: var(--rose); text-decoration: underline;">Ver en Google Maps</a><br>
+                    <strong>COORDENADAS:</strong> -16.510985, -68.124550<br>
+                    <strong>HORA:</strong> 17:30
                 </div>
 
                 <p style="text-align: center; margin-top: 30px;">
-                    Te espero ahí puntualmente.<br>
+                    Te espero allí con ansias.<br>
                     <span class="handwritten" style="font-size: 2.5rem;">Te ama, M</span>
                 </p>
             </div>
@@ -263,6 +259,14 @@
     </div>
 
     <script>
+        const audio = document.getElementById('bgMusic');
+
+        function startExperience() {
+            // Reproducir música al primer clic (requisito del navegador)
+            audio.play().catch(e => console.log("Error al reproducir audio"));
+            nextPage(2);
+        }
+
         function nextPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('p' + n).classList.add('active');
@@ -270,7 +274,7 @@
             
             if(n === 2) { 
                 const v = document.getElementById('v1');
-                v.play().catch(e => console.log("Auto-play prevenido")); 
+                v.play().catch(e => console.log("Video bloqueado")); 
             }
         }
 
@@ -280,12 +284,11 @@
         }
 
         function askPassword() {
-            const pass = prompt("Para acceder a las coordenadas finales, responda:\n¿Cuál es el color favorito de M?");
-            
+            const pass = prompt("PROTOCOLOS DE SEGURIDAD:\n¿Cuál es el color favorito de M?");
             if (pass && pass.toLowerCase().trim() === "verde") {
                 nextPage(6);
             } else if (pass !== null) {
-                alert("Acceso Denegado. Intente de nuevo, Agente.");
+                alert("Clave incorrecta. El acceso permanece restringido.");
             }
         }
 

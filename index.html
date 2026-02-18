@@ -24,11 +24,11 @@
         }
 
         .newspaper {
-            width: 85%; /* Ajustado para que no toque los bordes del cel */
+            width: 85%;
             max-width: 480px;
             background-color: var(--paper);
             background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            padding: 25px; /* Reducido un poco para ganar espacio en pantalla chica */
+            padding: 25px;
             margin: 20px 0;
             box-shadow: 0 0 80px rgba(0,0,0,0.9), inset 0 0 100px rgba(176,141,87,0.1);
             border-radius: 4px;
@@ -37,12 +37,12 @@
             border: 1px solid #e3d9c6;
         }
 
-        .page { display: none; animation: smoothReveal 2s ease; }
+        .page { display: none; animation: smoothReveal 1.5s ease; }
         .active { display: block; }
 
         @keyframes smoothReveal {
-            from { opacity: 0; filter: blur(10px); }
-            to { opacity: 1; filter: blur(0); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .header-main {
@@ -54,7 +54,7 @@
 
         .edition-title {
             font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 2.8rem; /* Un poco más pequeño para que no se corte en móviles */
+            font-size: 2.8rem;
             color: var(--rose);
             margin: 0;
         }
@@ -69,7 +69,7 @@
 
         .photo-frame {
             background: #fff;
-            padding: 10px; /* Reducido para móviles */
+            padding: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin: 20px 0;
             border: 1px solid #f0e6d2;
@@ -81,7 +81,7 @@
         .handwritten {
             font-family: 'Dancing Script', cursive;
             color: var(--rose);
-            font-size: 2.2rem; /* Ajustado para legibilidad en vertical */
+            font-size: 2.2rem;
             line-height: 1.2;
         }
 
@@ -89,7 +89,7 @@
             background: var(--rose);
             color: #fdfaf3;
             border: none;
-            padding: 18px; /* Más cómodo para el dedo */
+            padding: 18px;
             width: 100%;
             font-family: 'Special Elite', serif;
             font-size: 1rem;
@@ -100,6 +100,11 @@
             transition: 0.4s;
             letter-spacing: 1px;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-unlock {
+            background: #2c2c2c;
+            margin-top: 15px;
         }
 
         .quote-box {
@@ -121,6 +126,14 @@
             animation: fall linear forwards;
         }
 
+        /* Estilo para la carta final */
+        .final-letter {
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
         @keyframes fall {
             to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
@@ -140,11 +153,7 @@
                     <p style="font-size: 0.7rem; color: #777;">REMITENTE: M (SU AYUDANTE FIEL)</p>
                 </div>
 
-                <div class="music-container">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2kVtMvrlcK5SRxZvdHgTzn?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-
-                <p style="line-height: 1.6; font-size: 0.95rem;">Usted ha sido seleccionada para revisar una serie de hallazgos críticos. Por favor, <b>Agente Santos</b>, active la música y proceda con el descubrimiento.</p>
+                <p style="line-height: 1.6; font-size: 0.95rem;">Usted ha sido seleccionada para revisar una serie de hallazgos críticos. Por favor, <b>Agente Santos</b>, proceda con el descubrimiento.</p>
 
                 <button class="btn-love" onclick="nextPage(2)">REVISAR PRUEBAS</button>
             </div>
@@ -217,9 +226,37 @@
                 <div class="quote-box">
                     "La Agente Santos ha aceptado el primer caso de su carrera: Ser mi San Valentín."
                 </div>
-                <p style="font-size: 0.9rem;">Nos vemos el 18. Prepárese, Agente, porque esto apenas comienza.</p>
-                <br>
+                <p style="font-size: 0.9rem;">Nos vemos el 18. Pero antes, Agente, queda un último protocolo de seguridad.</p>
+                
+                <button class="btn-love btn-unlock" onclick="askPassword()">DESBLOQUEAR UBICACIÓN</button>
+                
+                <br><br>
                 <h2 class="handwritten" style="font-size: 2.8rem;">TE AMA M</h2>
+            </div>
+        </div>
+
+        <div class="page" id="p6">
+            <div class="header-main">
+                <span class="tagline">Coordenadas Desbloqueadas</span>
+                <h1 class="edition-title" style="font-size: 2.2rem;">Instrucciones Finales</h1>
+            </div>
+
+            <div class="final-letter">
+                <p class="handwritten" style="font-size: 2.5rem; color: var(--rose); margin-bottom: 10px;">Perfecto, mi amor...</p>
+                <p>Primero que nada, <b>¡Feliz San Valentín!</b></p>
+                <p>Como ves, el acceso al lugar se ha desbloqueado, pero... ¿realmente creíste que sería tan fácil? Pues no, Agente. Su última misión requiere agudeza visual.</p>
+                <p>Debe dirigirse al punto donde el aroma del café y la nostalgia de los discos se encuentran; un rincón donde cada esquina esconde un tesoro <i>vintage</i>.</p>
+                
+                <div class="quote-box" style="border-left: 4px solid var(--gold); background: #fff;">
+                    <strong>PUNTO DE REUNIÓN:</strong><br>
+                    📍 <a href="https://www.google.com/maps?q=-16.510985557152303,-68.12455033745351" target="_blank" style="color: var(--rose); text-decoration: none;">-16.5109855, -68.1245503</a><br>
+                    <strong>HORA DE ENCUENTRO:</strong> 17:30
+                </div>
+
+                <p style="text-align: center; margin-top: 30px;">
+                    Te espero ahí puntualmente.<br>
+                    <span class="handwritten" style="font-size: 2.5rem;">Te ama, M</span>
+                </p>
             </div>
         </div>
 
@@ -230,10 +267,10 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('p' + n).classList.add('active');
             window.scrollTo({top: 0, behavior: 'smooth'});
-            // Ajuste playsinline para móviles
+            
             if(n === 2) { 
                 const v = document.getElementById('v1');
-                v.play().catch(e => console.log("Auto-play prevenido por el navegador")); 
+                v.play().catch(e => console.log("Auto-play prevenido")); 
             }
         }
 
@@ -242,8 +279,18 @@
             setInterval(createSpecialRain, 150);
         }
 
+        function askPassword() {
+            const pass = prompt("Para acceder a las coordenadas finales, responda:\n¿Cuál es el color favorito de M?");
+            
+            if (pass && pass.toLowerCase().trim() === "verde") {
+                nextPage(6);
+            } else if (pass !== null) {
+                alert("Acceso Denegado. Intente de nuevo, Agente.");
+            }
+        }
+
         function createSpecialRain() {
-            const symbols = ['💕', '💖', '🌷', '🐧'];
+            const symbols = ['💕', '💖', '🌷', '✨'];
             const p = document.createElement('div');
             p.classList.add('falling');
             p.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
